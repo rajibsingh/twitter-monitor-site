@@ -1,0 +1,9 @@
+{
+  "name": "twitter-monitor-site",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
