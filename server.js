@@ -18,7 +18,12 @@ app.get('/', function (req, res) {
         console.log("Connected correctly to server");
         var col = db.collection('tweets').find().toArray(function(err, results) {
             console.log(results);
-            for (tweet in results) {
+            // ytf do I have to use an index-based for? was using a construct of
+            //     for (tweet in tweets)
+            // but tweet was just an int of the item's index in the array
+            for (i = 0; i < results.length; i++) {
+                tweet = results[i];
+                console.log("tweet: " + tweet);
                 tweets.push(tweet);
             }
             db.close();
