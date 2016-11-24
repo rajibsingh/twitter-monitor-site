@@ -1,0 +1,21 @@
+{
+  "name": "twitter-monitor-site",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Rajib Singh <rajibsingh@yahoo.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rajibsingh/twitter-monitor-site",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

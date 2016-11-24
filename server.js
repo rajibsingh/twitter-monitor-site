@@ -5,6 +5,8 @@ const app = express();
 
 app.set('view engine', 'pug')
 app.set('views', __dirname + '/public/views');
+app.use(express.static('public'))
+
 app.listen(3000, function() {
     console.log('listening on 3000')
 })
