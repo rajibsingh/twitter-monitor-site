@@ -29,7 +29,8 @@ app.get('/', function (req, res) {
 })
 
 app.get('/detail/:tweetId', function (req, res) {
-    var tweetId = req.params.tweetId;
+    var tweetStr = req.params.tweetId;
+    var tweetId = parseInt(tweetStr);
     console.log("tweetId: " + tweetId);
 
     var MongoClient = require('mongodb').MongoClient , assert = require('assert');
@@ -39,7 +40,7 @@ app.get('/detail/:tweetId', function (req, res) {
         assert.equal(null, err);
         console.log(err);
         var tweet = "initialized but not set";
-        var analysisPromise = db.collection('processed_tweets').findOne({"_id" : tweetId});
+        var analysisPromise = db.collection('processed_tweets').findOne({"_id":tweetId});
         console.log("analysisPromise: " + analysisPromise);
         analysisPromise.then(function (result) {
                 console.log("result: " + result);
