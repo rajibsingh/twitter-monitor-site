@@ -2,14 +2,16 @@ html
     head
         title= title
         link(href='/components/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
+        link(href='/css/site.css', rel='stylesheet')
         script(src='/components/d3/d3.js')
         script(src='/components/jquery/dist/jquery.js')
+        script(src='/js/site.js')
         require('bootstrap')
 
     body
-        h1= message
-        ol
+        h1= Tweets
             each tweet in tweets
-                li
-                    a(href="/detail" + "/" + tweet.id)=tweet.text
-
+                p
+                    span(class="listing") #{tweet.user.screen_name}
+                    span(class="listing")
+                        a(href="/detail" + "/" + tweet.id)=tweet.text

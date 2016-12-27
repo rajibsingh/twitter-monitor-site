@@ -8,5 +8,7 @@ html
 
     body
         h1 Detail View
-            div= tweet
-                div= analysis
+            div= tweet.text
+                div= analysis.noun_phrases
+                div= analysis.sentiment.polarity
+                div= analysis.sentiment.subjectivity
