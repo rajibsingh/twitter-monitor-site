@@ -19,11 +19,18 @@ app.get('/', function (req, res) {
             // ytf do I have to use an index-based for? was using a construct of
             // for (tweet in tweets) but tweet was just an int of the item's index in the array
             for (i = 0; i < results.length; i++) {
-                tweet = results[i];
+                var tweet = results[i];
+                //massage the creation timestring from twitter which doesn't parse cleanly for js date
+                var creationDateStr = tweet["created_at"];
+                creationDateStr = creationDateStr.substring(3,16) + " " + creationDateStr.substring(26);
+                console.log("creationDateStr: " + creationDateStr);
+                creationDate = new Date(creationDateStr);
+                console.log("creationDate: " + creationDate);
+                tweet["created_at"] = creationDate;
                 tweets.push(tweet);
             }
             db.close();
-            res.render('index', { title: 'Hey', message: 'Hello there!', tweets: tweets })
+            res.render('index', { title: 'Twitter Monitor', tweets: tweets })
         });
     });
 })

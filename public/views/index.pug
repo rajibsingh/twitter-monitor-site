@@ -15,15 +15,21 @@ html
                 $('#example').DataTable({
                     data:!{JSON.stringify(tweets)} ,
                     columns: [
-                        {data: "user.screen_name"},
-                        {data: "created_at",
-                        render: function (data, type, row) {
-                            creation_date = new Date(data);
-                            return new moment(creation_date).format('h:MMa MMM D, YYYY');}},
-                        {data: "text",
-                        render: function (data, type, row) {
-                            var url = "/detail/" + row["id"];
-                            return "<a href='" + url + "'>" + row["text"] + "</a";}}
+                        {
+                            data: "user.screen_name"
+                        },
+                        {
+                            data: "created_at",
+                            render: function (data, type, row) {
+                                return moment(data).format('MMM D, YYYY h:mma');
+                            }
+                        },
+                        {
+                            data: "text",
+                            render: function (data, type, row) {
+                                var url = "/detail/" + row["id"];
+                                return "<a href='" + url + "'>" + row["text"] + "</a";}
+                        }
                     ]
                 });
             });
