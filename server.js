@@ -39,7 +39,6 @@ app.get('/detail/:tweetId', function (req, res) {
     MongoClient.connect(url, function(err, db) {
         assert.equal(null, err);
         console.log(err);
-        var tweet = "initialized but not set";
         var tweetPromise = db.collection('tweets').findOne({"_id" : tweetId});
         tweetPromise.then(function (result) {
             tweet = result;
@@ -47,7 +46,6 @@ app.get('/detail/:tweetId', function (req, res) {
             analysisPromise.then(function (result) {
                 console.log("result: " + result);
                 db.close();
-                // res.render('detail', {"analysis" : result, 'tweet': 'placeholder tweet'});
                 res.render('detail', { layout : 'detail', tweet: tweet, analysis: result});
             }, function(err) {
                 console.log("failed to retrieve tweet: " + tweetId);

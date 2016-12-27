@@ -7,8 +7,15 @@ html
         require('bootstrap')
 
     body
-        h1 Detail View
+        h1 Detail
             div= tweet.text
-                div= analysis.noun_phrases
-                div= analysis.sentiment.polarity
-                div= analysis.sentiment.subjectivity
+            form
+                div(class="form-group")
+                    label(for="noun_phrases") noun phrases:
+                    input(type="text" id="noun_phrases" value=analysis.noun_phrases class="form-control")
+                div(class="form-group")
+                    label(for="sentiment.polarity") sentiment polarity:
+                    input(type="text" id="sentiment.polarity" value=analysis.sentiment.polarity class="form-control")
+                div(class="form-group")
+                    label(for="sentiment.subjectivity") sentiment subjectivity:
+                    input(type="text" id="sentiment.subjectivity" value=analysis.sentiment.subjectivity class="form-control")
