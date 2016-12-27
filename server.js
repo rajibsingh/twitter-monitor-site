@@ -40,16 +40,22 @@ app.get('/detail/:tweetId', function (req, res) {
         assert.equal(null, err);
         console.log(err);
         var tweet = "initialized but not set";
-        var analysisPromise = db.collection('processed_tweets').findOne({"_id":tweetId});
-        console.log("analysisPromise: " + analysisPromise);
-        analysisPromise.then(function (result) {
+        var tweetPromise = db.collection('tweets').findOne({"_id" : tweetId});
+        tweetPromise.then(function (result) {
+            tweet = result;
+            var analysisPromise = db.collection('processed_tweets').findOne({"_id":tweetId});
+            analysisPromise.then(function (result) {
                 console.log("result: " + result);
                 db.close();
-                res.render('detail', {"analysis" : result, 'tweet': 'placeholder tweet'});
+                // res.render('detail', {"analysis" : result, 'tweet': 'placeholder tweet'});
+                res.render('detail', { layout : 'detail', tweet: tweet, analysis: result});
+            }, function(err) {
+                console.log("failed to retrieve tweet: " + tweetId);
+                console.log(("err: ") + err);
+            });
         }, function(err) {
-            console.log(("err: ") + err);
+            console.log("failed to retrieve tweet: " + tweetId);
+            console.log("err: " + err);
         });
-
     });
-
 })
