@@ -24,7 +24,8 @@ app.get('/', function (req, res) {
                 var creationDateStr = tweet["created_at"];
                 creationDateStr = creationDateStr.substring(3,16) + " " + creationDateStr.substring(26);
                 console.log("creationDateStr: " + creationDateStr);
-                creationDate = new Date(creationDateStr);
+                var moment = require('moment');
+                creationDate = new moment(creationDateStr);
                 console.log("creationDate: " + creationDate);
                 tweet["created_at"] = creationDate;
                 tweets.push(tweet);

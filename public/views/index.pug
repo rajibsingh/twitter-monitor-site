@@ -7,6 +7,8 @@ html
         script(src='/components/jquery/dist/jquery.js')
         script(src='/js/site.js')
         script(src='/components/datatables.net/js/jquery.dataTables.js')
+        script(src='/components/datatables.net/js/dataTables.datetime-moment.js')
+        link(href='/components/datatables.net-dt/css/jquery.dataTables.css', rel='stylesheet')
         link(href='/components/datatables.net-dt/css/jquery.dataTables.css', rel='stylesheet')
         script(src='/components/moment/moment.js')
         script.
@@ -30,7 +32,8 @@ html
                                 var url = "/detail/" + row["id"];
                                 return "<a href='" + url + "'>" + row["text"] + "</a";}
                         }
-                    ]
+                    ],
+                    displayLength: 100
                 });
             });
         require('bootstrap')
