@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "d3": "^4.4.0"
+    "d3": "^4.4.0",
+    "datatables.net": "^1.10.13",
+    "datatables.net-dt": "^1.10.13"
   }
 }

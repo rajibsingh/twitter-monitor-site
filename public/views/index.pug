@@ -6,12 +6,24 @@ html
         script(src='/components/d3/d3.js')
         script(src='/components/jquery/dist/jquery.js')
         script(src='/js/site.js')
+        script(src='/components/datatables.net/js/jquery.dataTables.js')
+        link(href='/components/datatables.net-dt/css/jquery.dataTables.css', rel='stylesheet')
+        script.
+            $(document).ready(function () {
+                console.log("document ready is active");
+                $('#example').DataTable({
+                    data:!{JSON.stringify(tweets)} ,
+                    columns: [
+                        {data: "user.screen_name"},
+                        {data: "text"}
+                    ]
+                });
+            });
         require('bootstrap')
 
     body
-        h1= Tweets
-            each tweet in tweets
-                p
-                    span(class="listing") #{tweet.user.screen_name}
-                    span(class="listing")
+        h1 All Tweets
+            table(id="example", class="display", width="100%")
+                //span(class="listing") #{tweet.user.screen_name}
+                //span(class="listing")
                         a(href="/detail" + "/" + tweet.id)=tweet.text
