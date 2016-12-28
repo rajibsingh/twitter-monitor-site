@@ -13,7 +13,6 @@ html
         script(src='/js/datetime-moment.js')
         script.
             $(document).ready(function () {
-                console.log("document ready is active");
                 $('#example').DataTable({
                     data:!{JSON.stringify(tweets)} ,
                     columns: [
@@ -42,6 +41,3 @@ html
     body
         h1 All Tweets
             table(id="example", class="display", width="100%")
-                //span(class="listing") #{tweet.user.screen_name}
-                //span(class="listing")
-                        a(href="/detail" + "/" + tweet.id)=tweet.text
