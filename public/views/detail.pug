@@ -8,23 +8,24 @@ html
 
     body
         h1 Detail
-            div= tweet.text
-            form
-                div(class="form-group")
-                    label(for="noun_phrases") noun phrases:
-                    input(type="text" id="noun_phrases" value=analysis.noun_phrases class="form-control")
-                div(class="form-group")
-                    label(for="sentiment.polarity") sentiment polarity:
-                    input(type="text" id="sentiment.polarity" value=analysis.sentiment.polarity class="form-control")
-                div(class="form-group")
-                    label(for="sentiment.subjectivity") sentiment subjectivity:
-                    input(type="text" id="sentiment.subjectivity" value=analysis.sentiment.subjectivity class="form-control")
-                div(class="form-group")
-                    label(for="average_sentence_length") average sentence length:
-                    input(type="text" id="average_sentence_length" value=analysis.average_sentence_length class="from-control")
-                div(class="form-group")
-                    label(for="average_syllables_per_word") average syllables per word:
-                    input(type="text" id="average_syllables_per_word" value=analysis.average_syllables_per_word class="form-control")
-                div(class="form-group")
-                    label(for="flesch-kincaid") flesch-kincaid:
-                    input(type="text" id="flesch-kincaid" value=analysis.flesch_kincaid class="form-control")
+            form(class="panel panel-default")
+                div(class="panel-body")
+                    div(class="panel-heading") #{tweet.text}
+                    div(class="form-group")
+                        label(for="noun_phrases") noun phrases:
+                        input(type="text" id="noun_phrases" value=analysis.noun_phrases class="form-control")
+                    div(class="form-group")
+                        label(for="sentiment.polarity") sentiment polarity:
+                        input(type="text" id="sentiment.polarity" value=analysis.sentiment.polarity class="form-control")
+                    div(class="form-group")
+                        label(for="sentiment.subjectivity") sentiment subjectivity:
+                        input(type="text" id="sentiment.subjectivity" value=analysis.sentiment.subjectivity class="form-control")
+                    div(class="form-group")
+                        label(for="average_sentence_length") average sentence length:
+                        input(type="text" id="average_sentence_length" value=analysis.average_sentence_length class="form-control")
+                    div(class="form-group")
+                        label(for="average_syllables_per_word") average syllables per word:
+                        input(type="text" id="average_syllables_per_word" value=analysis.average_syllables_per_word class="form-control")
+                    div(class="form-group")
+                        label(for="flesch-kincaid") flesch-kincaid:
+                        input(type="text" id="flesch-kincaid" value=analysis.flesch_kincaid class="form-control")

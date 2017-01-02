@@ -13,7 +13,8 @@ html
         script(src='/js/datetime-moment.js')
         script.
             $(document).ready(function () {
-                $.fn.dataTable.moment();
+                $.fn.dataTable.moment('MMM D, YYYY h:mma');
+
                 $('#example').DataTable({
                     data:!{JSON.stringify(tweets)} ,
                     columns: [
@@ -34,7 +35,7 @@ html
                                 return "<a href='" + url + "'>" + row["text"] + "</a";}
                         }
                     ],
-                    displayLength: 100
+                    displayLength: 500
                 });
             });
         require('bootstrap')
