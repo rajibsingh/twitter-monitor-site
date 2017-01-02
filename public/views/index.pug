@@ -7,12 +7,13 @@ html
         script(src='/components/jquery/dist/jquery.js')
         script(src='/js/site.js')
         script(src='/components/datatables.net/js/jquery.dataTables.js')
-        link(href='/components/datatables.net-dt/css/jquery.dataTables.css', rel='stylesheet')
+        //link(href='http://cdn.datatables.net/plug-ins/1.10.13/sorting/datetime-moment.js')
         link(href='/components/datatables.net-dt/css/jquery.dataTables.css', rel='stylesheet')
         script(src='/components/moment/moment.js')
         script(src='/js/datetime-moment.js')
         script.
             $(document).ready(function () {
+                $.fn.dataTable.moment();
                 $('#example').DataTable({
                     data:!{JSON.stringify(tweets)} ,
                     columns: [
@@ -22,7 +23,7 @@ html
                         {
                             data: "created_at",
                             render: function (data, type, row) {
-                                return moment(data).format('MMM D, YYYY h:mma');
+                                return moment(data, "MMM D, YYYY h:mma");
                             },
                             type: 'date'
                         },

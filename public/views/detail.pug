@@ -20,5 +20,11 @@ html
                     label(for="sentiment.subjectivity") sentiment subjectivity:
                     input(type="text" id="sentiment.subjectivity" value=analysis.sentiment.subjectivity class="form-control")
                 div(class="form-group")
+                    label(for="average_sentence_length") average sentence length:
+                    input(type="text" id="average_sentence_length" value=analysis.average_sentence_length class="from-control")
+                div(class="form-group")
+                    label(for="average_syllables_per_word") average syllables per word:
+                    input(type="text" id="average_syllables_per_word" value=analysis.average_syllables_per_word class="form-control")
+                div(class="form-group")
                     label(for="flesch-kincaid") flesch-kincaid:
                     input(type="text" id="flesch-kincaid" value=analysis.flesch_kincaid class="form-control")
