@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
     });
 })
 
-app.get('/detail/:tweetId', function (req, res) {
+app.get('/tweet/:tweetId', function (req, res) {
     var tweetStr = req.params.tweetId;
     var tweetId = parseInt(tweetStr);
     console.log("tweetId: " + tweetId);
@@ -52,7 +52,7 @@ app.get('/detail/:tweetId', function (req, res) {
         console.log(err);
         var tweetPromise = db.collection('tweets').findOne({"_id" : tweetId});
         tweetPromise.then(function (result) {
-            tweet = result;
+            var tweet = result;
             var analysisPromise = db.collection('processed_tweets').findOne({"_id":tweetId});
             analysisPromise.then(function (result) {
                 console.log("result: " + result);
@@ -66,5 +66,34 @@ app.get('/detail/:tweetId', function (req, res) {
             console.log("failed to retrieve tweet: " + tweetId);
             console.log("err: " + err);
         });
+    });
+})
+
+app.get('/user/:username', function (req, res) {
+    var username = req.params.username;
+    console.log("username: " + username);
+    var MongoClient = require('mongodb').MongoClient, assert = require('assert');
+    var url = 'mongodb://localhost:27017/tweetsdb';
+
+    MongoClient.connect(url, function (err, db) {
+        assert.equal(null, err);
+        console.log(err);
+        var userTweetsPromise = db.collection('tweets')
+            .find({"user.screen_name": username})
+            .toArray(function (result) {
+                        res.render('user', {layout: 'user', userTweets: result});
+                    },
+                    function (err) {
+                        console.log("failed to retrieve user tweets for  " + username);
+                        console.log("err: " + err);
+                    });
+        // userTweetsPromise.then(
+        //     function (result) {
+        //         res.render('detail', {layout: 'detail', userTweets: result});
+        //     },
+        //     function (err) {
+        //         console.log("failed to retrieve user tweets for  " + username);
+        //         console.log("err: " + err);
+        //     });
     });
 })
