@@ -81,19 +81,12 @@ app.get('/user/:username', function (req, res) {
         var userTweetsPromise = db.collection('tweets')
             .find({"user.screen_name": username})
             .toArray(function (result) {
-                        res.render('user', {layout: 'user', userTweets: result});
-                    },
-                    function (err) {
-                        console.log("failed to retrieve user tweets for  " + username);
-                        console.log("err: " + err);
-                    });
-        // userTweetsPromise.then(
-        //     function (result) {
-        //         res.render('detail', {layout: 'detail', userTweets: result});
-        //     },
-        //     function (err) {
-        //         console.log("failed to retrieve user tweets for  " + username);
-        //         console.log("err: " + err);
-        //     });
+                    res.render('user', {layout: 'user', userTweets: result});
+                },
+                function (err) {
+                    console.log("failed to retrieve user tweets for  " + username);
+                    console.log("err: " + err);
+                }
+            );
     });
 })
